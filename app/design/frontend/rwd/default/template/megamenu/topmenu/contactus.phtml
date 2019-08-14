@@ -1,0 +1,29 @@
+<?php
+$data = $this->getTemplateData();
+?>
+<div class="block-megamenu sub-menu" id="menu1" style="">
+    <h1 class="megamenu-title">Contact Form</h1>
+   
+    <div class="megamenu-header">
+		<?php $block = Mage::getModel('cms/block')->load($data['header']); ?>
+        <?php echo $block->getContent(); ?>
+    </div>
+    <div class="megamenu-main-content">
+    <ul class="block-contact ">
+        <li class="level1-megamenu">
+            
+            <?php
+            echo $this->getLayout()->createBlock('core/template')
+                    ->setTemplate('contacts/form.phtml')->toHtml();
+            ?>            
+        </li>
+    </ul>
+    </div>
+
+    <div class="megamenu-footer"> 
+        <span>
+            <?php $footerblock = Mage::getModel('cms/block')->load($data['footer']); ?>
+<?php echo $footerblock->getContent(); ?>
+        </span> 
+    </div>
+</div>

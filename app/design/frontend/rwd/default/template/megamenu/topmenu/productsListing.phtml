@@ -1,0 +1,53 @@
+<?php
+$data = $this->getTemplateData();
+$countCategoriesIds = count($data['products']);
+$perColumn = round($countCategoriesIds / $data['column_count']);
+$perColumn = ($perColumn <= 0) ? 1 : $perColumn;
+$productChunk = array_chunk($data['products'], $perColumn);
+$fontSize = Mage::registry('fontSize');
+$fontFamily = Mage::registry('fontFamily');
+$fontColor = Mage::registry('fontColor') . $fontSize . $fontFamily;
+?>
+<div class="products-megamenu-grid sub-menu" style="">       
+    <div class="megamenu-header" style="">
+        <?php $block = Mage::getModel('cms/block')->load($data['header']); ?>
+        <?php echo $block->getContent(); ?>
+    </div>
+    <?php foreach ($productChunk as $product): ?>
+        <div class="level0-megamenu megamenu-main-content">
+            <ul>
+                <?php foreach ($product as $proData): ?>
+                    <li class="item">
+                        <h1 class="product-name" 
+                            style="<?php echo $fontColor; ?>">
+                                <?php echo $proData['name'] ?>
+                        </h1>
+
+                        <a class="product-image" href="<?php echo $proData['path'] ?>">
+                            <img width="120" src="<?php echo $proData['image'] ?>" />
+                        </a>
+                        <div class="product-shop">
+                            <div class="price-box"> 
+                                <span class="regular-price" id="product-price-16"> 
+                                    <span class="price" style="<?php echo $fontColor; ?>">
+                                        <?php echo "$" . number_format($proData['price'], 2) ?>
+                                    </span> 
+                                </span> 
+                            </div>
+                            <button onclick="window.location.href = '<?php echo $proData['path'] ?>'" class="button">
+                                View Detail
+                            </button>
+                        </div>
+                    </li>   
+                <?php endforeach; ?>
+            </ul>
+        </div>    
+    <?php endforeach; ?>
+
+    <div id="" class="megamenu-footer" style=""> 
+        <?php
+        $footerblock = Mage::getModel('cms/block')->load($data['footer']);
+        echo $footerblock->getContent();
+        ?>
+    </div>
+</div>

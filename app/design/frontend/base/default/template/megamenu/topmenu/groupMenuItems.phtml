@@ -1,0 +1,48 @@
+<?php
+$data = $this->getTemplateData();
+
+$countCategoriesIds = count($data['categories']);
+
+$perColumn = round($countCategoriesIds / $data['column_count']);
+$columnSize = $data['column_size'];
+$categoryContentWidth = $data['column_count'] * $columnSize;
+$featureType = $data['feature_type'];
+$buffer = 50; // padding buffer value  
+if ($perColumn <= 0) {
+    $perColumn = 1;
+}
+
+$backgroundColor = Mage::registry('backgroundColor');
+$fontSize = Mage::registry('fontSize');
+$fontFamily = Mage::registry('fontFamily');
+$fontColor = Mage::registry('fontColor') . $fontSize . $fontFamily;
+
+$categoryChunk = array_chunk($data['categories'], $perColumn);
+?>
+<div class="grid-categories-megamenu sub-menu" style="<?php echo $backgroundColor . $fontColor ?>" >
+    <h2 id="" class="megamenu-title">Categories</h2> 
+    <ul class="grid-categories">
+        <div class="megamenu-header" >
+            <?php $block = Mage::getModel('cms/block')->load($data['header']); ?>
+            <?php echo $block->getContent(); ?></div>
+        <li class="level1-megamenu" >
+            <?php foreach ($categoryChunk as $category) : ?>
+                <ul >
+                    <?php foreach ($category as $categoryData) : ?>
+                        <li>                            
+                            <a href="<?php echo $categoryData['path'] ?>" style="<?php echo $fontColor; ?>">
+                                <?php echo $categoryData['name'] ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endforeach; ?>
+        </li> 
+
+        <div class="megamenu-footer">
+            <?php $footerblock = Mage::getModel('cms/block')->load($data['footer']); ?>
+            <?php echo $footerblock->getContent(); ?>
+        </div>
+    </ul>
+
+</div>

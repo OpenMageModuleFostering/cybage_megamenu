@@ -1,0 +1,89 @@
+<?php
+$data = $this->getTemplateData();
+$countCategoriesIds = count($data['categories']);
+$perColumn = round($countCategoriesIds / $data['column_count']);
+$columnSize = (isset($data['column_size']) && !empty($data['column_size'])) ? $data['column_size'] : 100;
+$categoryContentWidth = $data['column_count'] * $columnSize;
+$featureType = $data['feature_type'];
+$buffer = 50; // padding buffer value  
+if ($perColumn <= 0) {
+    $perColumn = 1;
+}
+$categoryChunk = array_chunk($data['categories'], $perColumn);
+$fontSize = Mage::registry('fontSize');
+$fontFamily = Mage::registry('fontFamily');
+$fontColor = Mage::registry('fontColor') . $fontSize . $fontFamily;
+?>
+<div class="grid-categories-megamenu sub-menu" style="">
+    <h2 id="" class="megamenu-title" style="">Categories</h2> 
+
+        <div class="megamenu-header" style="">
+            <?php $block = Mage::getModel('cms/block')->load($data['header']); ?>
+            <?php echo $block->getContent(); ?>
+        </div>
+        
+    <div class="grid-categories megamenu-main-content">
+        <div class="level1-megamenu" style="">
+
+            <?php foreach ($categoryChunk as $category): ?>
+                <ul style="">
+
+                    <?php foreach ($category as $categoryData): ?>
+                        <li>                            
+                            <a href="<?php echo $categoryData['path'] ?>" style="<?php echo $fontColor; ?>">
+                                <?php echo $categoryData['name'] ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endforeach; ?>
+        </div> 
+        <?php if ($featureType == 21 || $featureType == 22): ?>
+            <?php if ($featureType == 21): ?>
+                <div class="featured_content" style="">
+                    <h4 id="" class="megamenu-title" style=""><?php echo $data['feature_category_box_title'] ?></h4>
+                    <ul style="">
+                        <?php foreach ($data['feature_categories'] as $featurecategoryData) : ?>
+                            <li>
+                                <a href="<?php echo $featurecategoryData['path']; ?>">
+                                    <?php echo $featurecategoryData['name'] ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
+                <div class="featured_content" style="">
+                    <h4 id="" class="megamenu-title" style=""><?php echo $data['feature_product_box_title'] ?></h4>
+                    <ul style="">
+                        <?php
+                        $i = 1;
+                        foreach ($data['feature_products'] as $featurproductData) {
+                            ?>
+                            <?php if ($i <= 3): ?>
+                                <li >
+                                    <a href="<?php echo $featurproductData['path']; ?>">
+                                        <h6 class="product_name"><?php echo $featurproductData['name'] ?></h6>
+                                        <div class="product_image"><img src="<?php echo $featurproductData['image'] ?>"/></div>
+                                        <div class="product_price"><?php echo $featurproductData['price'] ?></div>
+                                    </a>
+                                </li>
+                            <?php endif; ?>    
+                            <?php
+                            $i++;
+                        }
+                        ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+    </div>  
+    
+        <div class="megamenu-footer" style="">
+                 <?php
+                 $footerblock = Mage::getModel('cms/block')->load($data['footer']);
+                 echo $footerblock->getContent();
+                 ?>
+        </div>
+
+</div>    

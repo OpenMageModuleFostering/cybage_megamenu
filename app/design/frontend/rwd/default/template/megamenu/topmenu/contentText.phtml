@@ -1,0 +1,26 @@
+<?php
+$data = $this->getTemplateData();
+$fontSize = Mage::registry('fontSize');
+$fontFamily = Mage::registry('fontFamily');
+$fontColor = Mage::registry('fontColor') . $fontSize . $fontFamily;
+?>
+<div class="products-megamenu-grid sub-menu" style="">       
+    <div class="megamenu-header" 
+         style="">
+             <?php $block = Mage::getModel('cms/block')->load($data['header']); ?>
+             <?php echo $block->getContent(); ?>
+    </div>            
+    <div class="main_content megamenu-main-content"  style="<?php echo $fontColor; ?>" >
+        <?php
+        $helper = Mage::helper('cms');
+        $processor = $helper->getPageTemplateProcessor();
+        $html = $processor->filter($data['content_container']);
+        echo $html;
+        ?>
+    </div>
+    <div id="" class="megamenu-footer" 
+         style=""> 
+             <?php $footerblock = Mage::getModel('cms/block')->load($data['footer']); ?>
+             <?php echo $footerblock->getContent(); ?>
+    </div>   
+</div>

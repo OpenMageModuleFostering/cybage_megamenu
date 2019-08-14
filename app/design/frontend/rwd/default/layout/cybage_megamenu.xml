@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head" >
+            <action method="addCss" ifconfig="megamenu/settings/enable">
+                <stylesheet>css/megamenu.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="top.menu" >
+            <block type="megamenu/html_topmenu" name="meagemu.topmenu"   template="megamenu/topmenu.phtml" ifconfig="megamenu/settings/enable"/>
+        </reference>
+        
+        <reference name="catalog.topnav">
+            <action method="setTemplate" ifconfig="megamenu/settings/enable">
+                <template>route/to/template</template>
+            </action>
+        </reference>
+    </default>
+</layout>

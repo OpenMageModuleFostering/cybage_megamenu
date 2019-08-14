@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <megamenu translate="label"  module = 'megamenu'>
+            <label>Cybage</label>
+            <sort_order>100</sort_order>
+        </megamenu>
+    </tabs>
+    <sections>  
+        <megamenu translate="label">
+            <label>Megamenu</label>
+            <tab>megamenu</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>            
+                <settings translate="label" module='megamenu'>
+                    <label>General Settings</label>                   
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <comment>
+                                <![CDATA[Enable or Disable this extension.]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </enable> 
+                    </fields>
+                </settings>
+                <megamenu_configuration translation='label' module='megamenu'>
+                    <label>Megameu Settings</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                        
+                        <background_color>
+                            <label>Background Color</label>
+                            <comment><![CDATA[Please Select Color]]></comment>
+                            <frontend_model>megamenu/adminhtml_system_config_form_field_colorpicker</frontend_model>
+                           
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_inwebsite>1</show_inwebsite>
+                            <show_in_store>1</show_in_store>
+                        </background_color>
+                        
+                        <font_color>
+                            <label>Font Color</label>
+                            <comment><![CDATA[Please Select Color]]></comment>                            
+                            <frontend_model>
+                                megamenu/adminhtml_system_config_form_field_colorpicker
+                            </frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_inwebsite>1</show_inwebsite>
+                            <show_in_store>1</show_in_store>
+                        </font_color>
+                        
+                        <font_family>
+                            <label>Font Family</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </font_family> 
+                        
+                        <font_size>
+                            <label>Font Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>megamenu/adminhtml_source_fontsize</source_model>                            
+                            <sort_order>4</sort_order>                            
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </font_size>
+                        <maximum_column_size>
+                            <label>Maximum number of columns</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>megamenu/adminhtml_source_columnsize</source_model>                            
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Maximum number of column]]></comment>
+<!--                            <depends>
+                                <settings>
+                                    <enable>1</enable>
+                                </settings>                                
+                            </depends>-->
+                        </maximum_column_size>
+                        
+                    </fields>
+                </megamenu_configuration>
+            </groups>
+        </megamenu>
+    </sections>     
+</config>

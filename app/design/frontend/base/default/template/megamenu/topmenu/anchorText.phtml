@@ -1,0 +1,15 @@
+<?php
+$data = $this->getTemplateData();
+$targetUrl = $data['target_url'];
+$menuId = $data['entity_id'];
+
+?>
+<script type="text/javascript">
+document.observe("dom:loaded", function() {
+  var url = '<?php echo $targetUrl; ?>'; 
+  var menuId =  '<?php echo $menuId; ?>'; 
+  $('anchor_menu_type_'+menuId).setAttribute('href', url); 
+});
+</script>
+
+

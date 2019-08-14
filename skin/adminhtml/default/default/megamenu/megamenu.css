@@ -1,0 +1,38 @@
+#megamenu_tabs_content_section_content .form-list td.value .grid select{
+    max-width: 66px !important;
+    width: auto !important;
+}
+#megamenu_tabs_content_section_content .form-list td.value .grid .input-text{
+    max-width: 66px !important;
+    width: 20px !important;
+}
+#megamenu_tabs_content_section_content .grid th, .grid td{
+    padding: 2px !important;
+}
+.megamenu-adminhtml-megamenu-edit .side-col{
+    width: auto !important;
+}
+
+.megamenu-adminhtml-megamenu-edit .columns {
+    background:url(../images/side_col_bg.gif) repeat-y 161px 0 !important; 
+}
+
+.megamenu-adminhtml-megamenu-edit div.main-col{
+    margin-left: 147px !important;
+}
+
+.megamenu-adminhtml-megamenu-edit .form-list td.label label{
+    width: 108px !important;
+}
+
+.megamenu-adminhtml-megamenu-edit .form-list td.label{
+    width: 108px !important;
+}
+
+.megamenu-adminhtml-megamenu-edit .grid tr.headings th a{
+    padding: 0 !important;
+}
+
+.megamenu-adminhtml-megamenu-edit .grid tr.headings th span.sort-title{
+    padding: 3px 2px 4px 0 !important;
+}

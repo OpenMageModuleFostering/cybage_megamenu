@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <megamenu_adminhtml_megamenu_index>
+        <reference name="content">
+            <block type="megamenu/adminhtml_megamenu" name="megamenu" />
+        </reference>
+    </megamenu_adminhtml_megamenu_index>
+    <megamenu_adminhtml_megamenu_edit>
+        <reference name="head">
+            <action method="setCanLoadExtJs">
+                <flag>1</flag>
+            </action>
+            <action method="setCanLoadTinyMce">
+                <flag>1</flag>
+            </action>
+            <action method="addJs">
+                <script>mage/adminhtml/wysiwyg/widget.js</script>
+            </action>            
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/megamenu.js</name>
+            </action>
+             <action method="addItem">
+                <type>skin_js</type>
+                <name>js/productselect.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>megamenu/megamenu.css</name>
+            </action>
+        </reference>
+    </megamenu_adminhtml_megamenu_edit>
+    <megamenu_adminhtml_megamenu_getcategories>
+        <remove name="head"/>        
+        <remove name="header"/>
+        <remove name="menu"/>
+        <remove name="footer"/>   
+        <reference name="content">
+        </reference>
+    </megamenu_adminhtml_megamenu_getcategories>    
+<!--    <reference name="head">
+        <action method="addItem">
+            <type>css</type>
+            <name>megamenu/megamnu.css</name>
+        </action>
+    </reference>-->
+</layout>

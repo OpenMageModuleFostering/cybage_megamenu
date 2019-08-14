@@ -1,0 +1,37 @@
+<?php if(Mage::helper('megamenu')->isMegamenuModuleEnabled()): 
+    
+    $menus = $this->getMenus(); 
+    $backgroundColor    = Mage::registry('backgroundColor');
+    $fontSize           = Mage::registry('fontSize');
+    $fontFamily         = Mage::registry('fontFamily');
+    $fontColor          = Mage::registry('fontColor').$fontSize.$fontFamily; 
+?>
+<div class="megamenu nav-container">
+    <ul id="nav" style="<?php echo $backgroundColor ?>">
+        <?php $menus = $this->getMenus(); ?>
+        <?php if(!empty($menus)): $i=1; ?>
+            <?php foreach ($menus as $menu) : ?>
+                <li class="menu_<?php echo $i++; ?>">
+                    <?php if($menu['type_id'] == 5): ?> 
+                        <a id="anchor_menu_type_<?php echo $menu['entity_id'];?>" 
+                           class="megamenu-lable" href="" title="<?php echo $menu['titel'];?>"
+                           style="<?php echo $fontColor; ?>" >
+                            <?php echo $menu['name'];?>
+                        </a>
+                            <?php else: ?>
+                        <a class="megamenu-lable" href="javascript:void(0)"
+                           style="<?php echo $fontColor; ?>" title="<?php echo $menu['titel'];?>"
+                           >
+                            <?php echo $menu['name'];?>
+                        </a>                
+                    <?php endif; ?>
+                    <div class="magestore-megamenu"
+                         style="<?php echo $backgroundColor.$fontColor ?>">
+                        <?php echo $template = $this->generateMenu($menu['entity_id'],  $menu['template_id']); ?> 
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </ul>
+</div>
+<?php endif; ?>
