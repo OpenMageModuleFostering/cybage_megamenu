@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/Cybage_Megamenu",
+    "name": "openmage-module-fostering\/cybage_megamenu",
     "type": "magento-module",
-    "license": "Open-Software-License",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Administrator can use the Megamenu plug-in for Navigation Menu Management at Magento store. For example, you can list category, product,contact us and link in main menu  .",
     "authors": [
